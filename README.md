@@ -1,5 +1,11 @@
 # Ecommerce Customer Intelligence (MY/SG)
 
+## Goals
+- Build a job-ready Data Analyst portfolio project for Malaysia/Singapore.
+- Use PostgreSQL for storage + SQL analysis.
+- Use Python for RFM segmentation + optional KMeans clustering.
+- Output a Power BI dashboard (pbix created locally; repo includes queries + modeling guide).
+
 ## Business Problem Statement
 Retail and ecommerce teams in Malaysia/Singapore need a clear view of revenue drivers, customer retention, and high-value segments. This project builds a reproducible analytics pipeline to store transactional data in PostgreSQL, derive KPIs and RFM segments, and surface insights in a Power BI dashboard.
 
@@ -10,6 +16,8 @@ The project expects CSV extracts with the following logical tables:
 - `order_items` (order_item_id, order_id, product_id, quantity, unit_price)
 - `products` (product_id, category, brand)
 - `payments` (payment_id, order_id, payment_type, payment_amount, payment_date)
+
+> Note: Column names can vary by dataset. The SQL schema and import scripts can be adjusted to match your CSV headers.
 
 ## Tech Stack
 - **Database**: PostgreSQL
@@ -30,35 +38,8 @@ The project expects CSV extracts with the following logical tables:
 - RFM Segments
 
 ## How to Run
+
 ### 1) PostgreSQL Setup
 ```bash
 createdb ecommerce_ci
 psql ecommerce_ci -f sql/00_create_schema.sql
-```
-
-### 2) Import Data
-Follow `sql/01_import_instructions.md` for COPY examples and file paths.
-
-### 3) Create KPI + RFM Views
-```bash
-psql ecommerce_ci -f sql/02_kpi_queries.sql
-psql ecommerce_ci -f sql/03_rfm.sql
-```
-
-### 4) Python Environment
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r python/requirements.txt
-```
-
-Run the notebook in `python/rfm_segmentation.ipynb` and export segments to PostgreSQL.
-
-## Power BI Dashboard (Placeholder)
-- **Data Model**: build relationships on `customer_id` and `order_id`.
-- **Measures**: use SQL views for KPIs and RFM segment tables for slicing.
-- **Screenshot Placeholder**: add an image here once the report is built.
-
-## Insights (Placeholder)
-- Example: "Top 20% of customers contribute 70% of revenue."
-- Example: "Repeat rate improved after a targeted campaign."
