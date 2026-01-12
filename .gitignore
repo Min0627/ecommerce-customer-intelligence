@@ -1,0 +1,21 @@
+# Raw data files
+/data_raw/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+
+# OS files
+.DS_Store
+
+# Power BI temp
+*.pbix
+*.pbit
+*.tmp
