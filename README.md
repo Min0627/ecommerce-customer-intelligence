@@ -42,4 +42,7 @@ The project expects CSV extracts with the following logical tables:
 ### 1) PostgreSQL Setup
 ```bash
 createdb ecommerce_ci
-psql ecommerce_ci -f sql/00_create_schema.sql
+psql -d ecommerce_ci -f sql/00_create_schema_olist.sql
+psql -d ecommerce_ci -v data_dir='C:/.../data_raw' -f sql/10_import_olist.sql
+psql -d ecommerce_ci -f sql/20_kpi_queries_olist.sql
+```
